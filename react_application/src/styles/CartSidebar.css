@@ -1,0 +1,26 @@
+.cart-sidebar{
+  position: fixed;
+  right: -400px;
+  top: 0;
+  width: 350px;
+  height: 100%;
+  background: rgb(3, 3, 3);
+  padding: 20px;
+  transition: 0.3s;
+  overflow-y: auto;
+  box-shadow: -2px 0 5px rgba(0,0,0,0.2);
+}
+
+.cart-sidebar.open{
+  right: 0;
+}
+
+.cart-item{
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.qty button{
+  margin: 5px;
+}
