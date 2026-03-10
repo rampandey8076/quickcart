@@ -1,0 +1,17 @@
+.card {
+  border: 1px solid #ddd;
+  padding: 15px;
+  border-radius: 30px;
+  text-align: center;
+  transition: 0.3s;
+  margin: 10px;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+}
+
+.card img {
+  width: 50%;
+  border-radius: 10px;
+}
