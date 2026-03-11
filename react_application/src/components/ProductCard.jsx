@@ -11,14 +11,9 @@ function ProductCard({ product, onAddToCart }) {
 
       <p>{product.description}</p>
 
-      <p className="price">${product.price}</p>
+      <h4>${product.price}</h4>
 
-      <span>{product.category}</span>
-
-      <button
-        className="add-btn"
-        onClick={() => onAddToCart(product)}
-      >
+      <button onClick={() => onAddToCart(product)}>
         Add to Cart
       </button>
 
