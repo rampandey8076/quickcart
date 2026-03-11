@@ -1,64 +1,22 @@
+import { useCart } from "../context/CartContext";
 import "../styles/CartSidebar.css";
 
-function CartSidebar({
-  isOpen,
-  cart,
-  onClose,
-  onUpdateQuantity,
-  onRemoveItem
-}) {
+function CartSidebar() {
 
-  const total = cart.reduce(
-    (sum, item) => sum + item.price * item.quantity,
-    0
-  );
+  const { cart, getTotalPrice } = useCart();
 
   return (
-    <div className={`cart-sidebar ${isOpen ? "open" : ""}`}>
+    <div className="cart-sidebar">
 
-      <div className="cart-header">
-        <h2>Your Cart</h2>
-        <button onClick={onClose}>X</button>
-      </div>
+      <h2>Your Cart</h2>
 
-      {cart.length === 0 ? (
-        <p>Your cart is empty</p>
-      ) : (
-        cart.map(item => (
+      {cart.map(item => (
+        <div key={item.id}>
+          {item.name} x {item.quantity}
+        </div>
+      ))}
 
-          <div key={item.id} className="cart-item">
-
-            <img src={item.image} width="60" />
-
-            <div>
-              <h4>{item.name}</h4>
-              <p>${item.price}</p>
-
-              <div className="qty">
-
-                <button onClick={() => onUpdateQuantity(item.id, -1)}>
-                  -
-                </button>
-
-                <span>{item.quantity}</span>
-
-                <button onClick={() => onUpdateQuantity(item.id, 1)}>
-                  +
-                </button>
-
-              </div>
-
-              <button onClick={() => onRemoveItem(item.id)}>
-                Remove
-              </button>
-
-            </div>
-
-          </div>
-        ))
-      )}
-
-      <h3>Total: ${total.toFixed(2)}</h3>
+      <h3>Total: ${getTotalPrice()}</h3>
 
     </div>
   );
